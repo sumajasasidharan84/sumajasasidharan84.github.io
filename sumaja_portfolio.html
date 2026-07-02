@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumaja Sasidharan — Academic Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B3A6B;
+  --teal: #2A7F7F;
+  --gold: #C8A84B;
+  --cream: #F9F6F0;
+  --light: #EEF2F7;
+  --text: #1C1C1E;
+  --muted: #6B7280;
+  --border: #DDE3ED;
+  --white: #FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(27,58,107,0.97);backdrop-filter:blur(8px);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--white);letter-spacing:0.03em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(145deg,var(--navy) 0%,#254d8f 50%,var(--teal) 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:58px}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1100px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,168,75,0.4);padding:4px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4rem);color:var(--white);line-height:1.1;margin-bottom:0.5rem;font-weight:600}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:2rem;line-height:1.8}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.badge{font-size:12px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);border:0.5px solid rgba(255,255,255,0.2)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:11px 26px;background:var(--gold);color:var(--navy);font-size:13px;font-weight:500;border-radius:4px;text-decoration:none;letter-spacing:0.03em;transition:transform 0.2s,box-shadow 0.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,168,75,0.3)}
+.btn-outline{display:inline-block;padding:11px 26px;border:1px solid rgba(255,255,255,0.4);color:var(--white);font-size:13px;border-radius:4px;text-decoration:none;transition:background 0.2s}
+.btn-outline:hover{background:rgba(255,255,255,0.1)}
+.hero-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:2rem;position:relative}
+.hero-card-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.stat-item{text-align:center;padding:1rem;background:rgba(255,255,255,0.05);border-radius:8px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--white);font-weight:600;line-height:1}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px}
+.contact-strip{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1)}
+.contact-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.contact-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.sec-tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;font-weight:500}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy);margin-bottom:0.5rem;font-weight:600}
+.sec-line{width:40px;height:2px;background:var(--gold);margin-bottom:2.5rem}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem}
+.about-text p strong{color:var(--navy)}
+.info-card{background:var(--light);border-radius:12px;padding:1.5rem;border-left:3px solid var(--teal)}
+.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.info-row:last-child{border-bottom:none}
+.info-key{color:var(--muted);font-weight:400}
+.info-val{color:var(--navy);font-weight:500;text-align:right}
+
+/* EDUCATION */
+.education{background:var(--cream)}
+.edu-timeline{position:relative;padding-left:2rem}
+.edu-timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--border)}
+.edu-item{position:relative;margin-bottom:2rem}
+.edu-dot{position:absolute;left:-2rem;top:4px;width:13px;height:13px;border-radius:50%;background:var(--white);border:2px solid var(--teal)}
+.edu-year{font-size:11px;color:var(--teal);font-weight:500;letter-spacing:0.05em;margin-bottom:4px}
+.edu-deg{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--navy);font-weight:600}
+.edu-univ{font-size:13px;color:var(--muted);margin-top:2px}
+.edu-spec{font-size:12px;color:var(--teal);margin-top:4px}
+.edu-grade{display:inline-block;font-size:11px;padding:2px 10px;background:var(--light);border-radius:20px;color:var(--navy);margin-top:6px}
+
+/* EXPERIENCE */
+.experience{background:var(--white)}
+.exp-card{background:var(--light);border-radius:12px;padding:2rem;border-left:4px solid var(--navy);margin-bottom:1rem}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);font-weight:600}
+.exp-inst{font-size:14px;color:var(--teal);margin:4px 0}
+.exp-period{font-size:12px;color:var(--muted)}
+.subj-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.subj{font-size:12px;padding:4px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--navy)}
+
+/* RESEARCH */
+.research{background:var(--cream)}
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ra-card{background:var(--white);border-radius:12px;padding:1.5rem;border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s}
+.ra-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,58,107,0.08)}
+.ra-icon{font-size:1.8rem;margin-bottom:0.8rem}
+.ra-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.ra-desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* PUBLICATIONS */
+.publications{background:var(--white)}
+.pub-item{padding:1.5rem;border-radius:12px;margin-bottom:1rem;background:var(--light);border:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.pub-type{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:500;white-space:nowrap}
+.pub-journal{background:#E1F5EE;color:#085041}
+.pub-conf{background:#EEEDFE;color:#3C3489}
+.pub-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:4px;line-height:1.5}
+.pub-authors{font-size:12px;color:var(--teal);margin-bottom:4px}
+.pub-details{font-size:12px;color:var(--muted)}
+.pub-year{font-size:11px;color:var(--gold);font-weight:500;margin-top:4px}
+
+/* MEMBERSHIPS */
+.memberships{background:var(--cream)}
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.mem-card{background:var(--white);border-radius:12px;padding:1.5rem;border:1px solid var(--border);text-align:center}
+.mem-icon{font-size:2rem;margin-bottom:0.8rem}
+.mem-title{font-size:13px;font-weight:500;color:var(--navy);line-height:1.5}
+.mem-sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* FDP */
+.fdp{background:var(--white)}
+.fdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fdp-item{padding:1rem 1.2rem;background:var(--light);border-radius:8px;border-left:3px solid var(--teal)}
+.fdp-prog{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.fdp-org{font-size:12px;color:var(--muted)}
+.fdp-dur{font-size:11px;color:var(--teal);margin-top:4px;font-weight:500}
+
+/* CONTACT */
+.contact-sec{background:linear-gradient(135deg,var(--navy),var(--teal));padding:4rem 2rem;text-align:center}
+.contact-sec .sec-tag{color:rgba(200,168,75,0.9)}
+.contact-sec .sec-title{color:var(--white)}
+.contact-sec .sec-line{margin:0 auto 2rem}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:2rem}
+.contact-link{display:flex;align-items:center;gap:8px;padding:12px 22px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:var(--white);text-decoration:none;font-size:13px;transition:background 0.2s}
+.contact-link:hover{background:rgba(255,255,255,0.2)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:1.5rem 2rem;text-align:center;font-size:12px;color:rgba(255,255,255,0.4)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .research-grid{grid-template-columns:1fr}
+  .fdp-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Sumaja Sasidharan</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Academic Portfolio</div>
+      <h1>Sumaja<br><em>Sasidharan</em></h1>
+      <p class="hero-sub">
+        Assistant Professor · P.G. Department of Computer Science<br>
+        Sree Sankara Vidyapeetom College, Valayanchirangara, Kerala<br>
+        PhD Scholar · Mahatma Gandhi University, Kottayam
+      </p>
+      <div class="hero-badges">
+        <span class="badge">Natural Language Processing</span>
+        <span class="badge">Cryptography</span>
+        <span class="badge">Database Systems</span>
+        <span class="badge">Malayalam Computing</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#publications" class="btn-primary">View Publications</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">At a glance</div>
+      <div class="stat-grid">
+        <div class="stat-item"><div class="stat-num">13+</div><div class="stat-lbl">Years Teaching</div></div>
+        <div class="stat-item"><div class="stat-num">6</div><div class="stat-lbl">Publications</div></div>
+        <div class="stat-item"><div class="stat-num">3</div><div class="stat-lbl">Memberships</div></div>
+        <div class="stat-item"><div class="stat-num">8+</div><div class="stat-lbl">FDP Programmes</div></div>
+      </div>
+      <div class="contact-strip">
+        <div class="contact-item"><div class="contact-dot"></div>sumajasasidharan@ssvcollege.ac.in</div>
+        <div class="contact-item"><div class="contact-dot"></div>+91 9495320124</div>
+        <div class="contact-item"><div class="contact-dot"></div>Valayanchirangara, Perumbavoor, Kerala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">About me</div>
+      <div class="sec-title">Educator. Researcher. Lifelong Learner.</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>I am an <strong>Assistant Professor in Computer Science</strong> with over 13 years of teaching experience at the undergraduate and postgraduate levels. My academic home is the <strong>P.G. Department of Computer Science</strong> at Sree Sankara Vidyapeetom College, Valayanchirangara, Perumbavoor, Kerala.</p>
+        <p>My teaching spans <strong>Computer Fundamentals, Database Management Systems (DBMS), and Natural Language Processing (NLP)</strong> — subjects I teach not just as theory, but as living, evolving disciplines that shape the way we interact with technology.</p>
+        <p>I am currently pursuing my <strong>PhD at Mahatma Gandhi University, Kottayam</strong>, with research focused on Malayalam-based intermediate cipher design integrated with traditional encryption algorithms — work that sits at the intersection of <strong>natural language processing, Malayalam computing, and cryptographic security</strong>.</p>
+        <p>I serve as a <strong>Member of the Post Graduate Board of Studies in Computer Science</strong> at Mahatma Gandhi University, and am an active member of <strong>ACM</strong> and the <strong>Soft Computing Research Society (SCRS)</strong>.</p>
+      </div>
+      <div>
+        <div class="info-card">
+          <div class="info-row"><span class="info-key">Designation</span><span class="info-val">Assistant Professor</span></div>
+          <div class="info-row"><span class="info-key">Department</span><span class="info-val">Computer Science</span></div>
+          <div class="info-row"><span class="info-key">Institution</span><span class="info-val">SSV College</span></div>
+          <div class="info-row"><span class="info-key">PhD University</span><span class="info-val">MGU Kottayam</span></div>
+          <div class="info-row"><span class="info-key">Research Centre</span><span class="info-val">Rajagiri College</span></div>
+          <div class="info-row"><span class="info-key">Experience</span><span class="info-val">13+ years</span></div>
+          <div class="info-row"><span class="info-key">Joined Service</span><span class="info-val">01 Feb 2012</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Education</div>
+      <div class="sec-title">Academic Qualifications</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="edu-timeline fade-up">
+      <div class="edu-item">
+        <div class="edu-dot" style="border-color:var(--gold)"></div>
+        <div class="edu-year">Pursuing — Part time</div>
+        <div class="edu-deg">Doctor of Philosophy (PhD)</div>
+        <div class="edu-univ">Mahatma Gandhi University, Kottayam</div>
+        <div class="edu-spec">Malayalam-based Cipher Design & Cryptographic Security</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2009</div>
+        <div class="edu-deg">M.Tech — Computational Engineering & Networking</div>
+        <div class="edu-univ">Amrita University, Coimbatore</div>
+        <span class="edu-grade">CGPA: 7.7 · First Class</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2006</div>
+        <div class="edu-deg">B.Sc — Information Technology</div>
+        <div class="edu-univ">Calicut University</div>
+        <span class="edu-grade">63%</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2002</div>
+        <div class="edu-deg">Higher Secondary — Science</div>
+        <div class="edu-univ">Kerala Higher Secondary Board</div>
+        <span class="edu-grade">76% · First Class</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2000</div>
+        <div class="edu-deg">SSLC</div>
+        <div class="edu-univ">Kerala Board of Public Examination</div>
+        <span class="edu-grade">92% · First Class</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Experience</div>
+      <div class="sec-title">Teaching Experience</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="exp-card fade-up">
+      <div class="exp-role">Assistant Professor — Stage II (Academic Level 11)</div>
+      <div class="exp-inst">P.G. Department of Computer Science · Sree Sankara Vidyapeetom College, Valayanchirangara, Perumbavoor, Kerala – 683556</div>
+      <div class="exp-period">01 February 2012 — Present &nbsp;·&nbsp; 13+ years</div>
+      <div class="subj-list">
+        <span class="subj">Computer Fundamentals</span>
+        <span class="subj">Database Management Systems</span>
+        <span class="subj">Natural Language Processing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Research</div>
+      <div class="sec-title">Research Areas</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="research-grid fade-up">
+      <div class="ra-card">
+        <div class="ra-icon">🔤</div>
+        <div class="ra-title">Natural Language Processing</div>
+        <div class="ra-desc">Text analysis, language modelling, sentiment analytics, and Malayalam language computing.</div>
+      </div>
+      <div class="ra-card">
+        <div class="ra-icon">🔐</div>
+        <div class="ra-title">Cryptography & Information Security</div>
+        <div class="ra-desc">Malayalam-based intermediate cipher design integrated with traditional encryption algorithms.</div>
+      </div>
+      <div class="ra-card">
+        <div class="ra-icon">🤖</div>
+        <div class="ra-title">Machine Learning & Deep Learning</div>
+        <div class="ra-desc">Supervised learning, classification, and applied ML for real-world problems.</div>
+      </div>
+      <div class="ra-card">
+        <div class="ra-icon">💬</div>
+        <div class="ra-title">Sentiment Analysis</div>
+        <div class="ra-desc">Temporal pattern analysis, mood forecasting, and mental health analytics using NLP.</div>
+      </div>
+      <div class="ra-card">
+        <div class="ra-icon">🗄️</div>
+        <div class="ra-title">Database Management Systems</div>
+        <div class="ra-desc">Relational databases, query optimisation, and data-driven application design.</div>
+      </div>
+      <div class="ra-card">
+        <div class="ra-icon">📚</div>
+        <div class="ra-title">Computer Science Education</div>
+        <div class="ra-desc">Outcome-based pedagogy, Bloom's taxonomy, and innovative teaching methodologies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications" id="publications">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Publications</div>
+      <div class="sec-title">Research Publications</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="fade-up">
+
+      <div class="pub-item">
+        <span class="pub-type pub-journal">Journal</span>
+        <div>
+          <div class="pub-title">Mental Health Sentiment Analytics Dashboard: Temporal Pattern Analysis and Mood Forecasting Using NLP</div>
+          <div class="pub-authors">Vijayalakshmi M Nair, Sumaja Sasidharan &amp; Dr. Manusankar C</div>
+          <div class="pub-details">International Journal of Research and Scientific Innovation (IJRSI), Vol. 13(2), pp. 1126–1141</div>
+          <div class="pub-year">February 2026</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-type pub-journal">Journal</span>
+        <div>
+          <div class="pub-title">Data Analytical Study of Fake News Detection Through NLP</div>
+          <div class="pub-authors">Sumaja Sasidharan</div>
+          <div class="pub-details">International Journal of All Research Education and Scientific Methods, Vol. 10, pp. 2930–2934 · Impact Factor: 7.429</div>
+          <div class="pub-year">July 2022</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-type pub-journal">Journal</span>
+        <div>
+          <div class="pub-title">An Analytical Study on the Effect of Weather Changes on Birds in a Machine Learning Perspective</div>
+          <div class="pub-authors">Sumaja Sasidharan</div>
+          <div class="pub-details">International Journal of Applied Research, pp. 164–166 · Impact Factor: 8.4</div>
+          <div class="pub-year">June 2022</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-type pub-journal">Journal</span>
+        <div>
+          <div class="pub-title">English to Malayalam Transliteration Using Sequence Labeling Approach</div>
+          <div class="pub-authors">Sumaja Sasidharan</div>
+          <div class="pub-details">International Journal of Recent Trends in Engineering, Volume 1, Number 2</div>
+          <div class="pub-year">2009</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-type pub-conf">Conference</span>
+        <div>
+          <div class="pub-title">A Comparative Study of Natural Language Integrated Encryption Mechanisms</div>
+          <div class="pub-authors">Sumaja Sasidharan</div>
+          <div class="pub-details">3rd International Conference on Advances in Science, Engineering & Technology (ICASET-2025) · Chennai (Virtual) · IFERP Academy</div>
+          <div class="pub-year">March 2025</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-type pub-conf">Conference</span>
+        <div>
+          <div class="pub-title">Scripting The Past: A Prelude To A Transliteration Model For Ancient Malayalam Graphologies</div>
+          <div class="pub-authors">Sumaja Sasidharan</div>
+          <div class="pub-details">International Conference on Artificial Intelligence &amp; Machine Learning</div>
+          <div class="pub-year">November 2024</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section class="memberships" id="memberships">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Memberships</div>
+      <div class="sec-title">Professional Roles & Memberships</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="mem-grid fade-up">
+      <div class="mem-card">
+        <div class="mem-icon">🎓</div>
+        <div class="mem-title">Member, Post Graduate Board of Studies in Computer Science</div>
+        <div class="mem-sub">Mahatma Gandhi University, Kottayam</div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-icon">💻</div>
+        <div class="mem-title">Member, Association for Computing Machinery</div>
+        <div class="mem-sub">ACM — World's largest computing society</div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-icon">🔬</div>
+        <div class="mem-title">Member, Soft Computing Research Society</div>
+        <div class="mem-sub">SCRS — International research community</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FDP -->
+<section class="fdp">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-tag">Development</div>
+      <div class="sec-title">Faculty Development Programmes</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="fdp-grid fade-up">
+      <div class="fdp-item">
+        <div class="fdp-prog">Faculty Development Programme</div>
+        <div class="fdp-org">Mahatma Gandhi University, Kottayam (DCDC)</div>
+        <div class="fdp-dur">Feb 2019 · 1 week</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">Summer School on Deep Learning</div>
+        <div class="fdp-org">CUSAT, Kochi</div>
+        <div class="fdp-dur">May 2019 · 5 days</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">MOOC: Online Learning & Content Development</div>
+        <div class="fdp-org">FLAIR Kerala / Directorate of Collegiate Education</div>
+        <div class="fdp-dur">Apr–May 2020 · 2 weeks</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">Workshop: Comprehensive e-Learning to e-Training</div>
+        <div class="fdp-org">Ramanujan College, Delhi / MHRD-PMMMNMTT</div>
+        <div class="fdp-dur">May–Jun 2020 · 2 weeks</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">FDP: Managing Online Classes & Co-Creating MOOCs 3.0</div>
+        <div class="fdp-org">MHRD / PMMMNMTT</div>
+        <div class="fdp-dur">Jul–Aug 2020 · 2 weeks</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">FDP: Research Methodology</div>
+        <div class="fdp-org">TLC, Ramanujan College, Delhi / MHRD-PMMMNMTT</div>
+        <div class="fdp-dur">Oct 2020 · 2 weeks</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">FDP: The Art of Framing Questions – Bloom's Taxonomy</div>
+        <div class="fdp-org">IQAC, Sree Sankara College, Kalady · UGC-MHRD-STRIDE</div>
+        <div class="fdp-dur">Jun 2021 · 1 week</div>
+      </div>
+      <div class="fdp-item">
+        <div class="fdp-prog">FDP: Perspectives of Outcome Based Education in Pedagogy</div>
+        <div class="fdp-org">Sree Sankara Vidyapeetom College · UGC-MHRD-STRIDE</div>
+        <div class="fdp-dur">Feb 2022 · 1 week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="container">
+    <div class="sec-tag">Contact</div>
+    <div class="sec-title">Get in Touch</div>
+    <div class="sec-line"></div>
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;max-width:500px;margin:0 auto">Feel free to reach out for academic collaborations, research discussions, or reviewer enquiries.</p>
+    <div class="contact-links">
+      <a href="mailto:sumajasasidharan@ssvcollege.ac.in" class="contact-link">✉️ sumajasasidharan@ssvcollege.ac.in</a>
+      <a href="tel:+919495320124" class="contact-link">📞 +91 9495320124</a>
+      <a href="https://ssvcollege.ac.in" target="_blank" class="contact-link">🌐 SSV College</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sumaja Sasidharan · Assistant Professor, P.G. Dept. of Computer Science, Sree Sankara Vidyapeetom College, Kerala</p>
+</footer>
+
+<script>
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
